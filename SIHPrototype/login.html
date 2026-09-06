@@ -1,0 +1,9 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>PACK VERIFY — Officer Login</title><link rel="stylesheet" href="style.css"></head><body>
+<div class="login"><form id="loginForm" class="loginbox"><div class="logo">PACK VERIFY</div><p class="muted">Officer Inspection Portal</p>
+<label>Officer ID</label><input id="oid" autocomplete="username" placeholder="Officer ID">
+<label>Password</label><input id="opass" type="password" autocomplete="current-password" placeholder="Password">
+<button class="primary" style="width:100%;margin-top:20px">Sign In</button><p id="err" class="small" style="color:#b42318;display:none">Invalid Officer ID or password.</p>
+</form></div><script>
+if(localStorage.getItem('hexa_auth')) location.href='dashboard.html';
+loginForm.addEventListener('submit',e=>{e.preventDefault();if(oid.value.trim()==='DEMO-OFFICER'&&opass.value==='demo123'){localStorage.setItem('hexa_auth','1');location.href='dashboard.html'}else err.style.display='block'})
+</script></body></html>

@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Product Repository PACK VERIFY</title><link rel="stylesheet" href="style.css"></head><body><header class="top">
+<div style="display:flex;align-items:center"><button class="menu" onclick="toggleMenu()">☰</button><a class="logo" href="dashboard.html">PACK VERIFY</a></div>
+<div class="profile"><div><b>OFFICER12</b><div class="small muted">Inspection Officer</div></div><button class="secondary" onclick="logout()">Logout</button></div>
+</header>
+<div class="layout"><aside id="sidebar" class="side">
+<a class="nav" data-page="dashboard.html" href="dashboard.html">Dashboard</a>
+<a class="nav" data-page="scan.html" href="scan.html">Scan Product</a>
+<a class="nav" data-page="history.html" href="history.html">Inspection History</a>
+<a class="nav" data-page="products.html" href="products.html">Product Repository</a>
+<a class="nav" data-page="reports.html" href="reports.html">Reports</a>
+<a class="nav" data-page="rules.html" href="rules.html">Compliance Rules</a>
+</aside><main class="content"><section><div class="head"><div><h1>Product Repository</h1><p class="muted">Previously inspected packaged products</p></div></div><div id="cards" class="cards"></div></section>
+<script>const p=[['FreshBite Biscuits','Food','Compliant','HS-1024'],['PureDrop Cooking Oil','Edible Oil','Review Required','HS-1023'],['DailyCare Soap','Personal Care','Potential Issue','HS-1022'],['CleanHome Detergent','Household','Compliant','HS-1021'],['MorningSip Beverage','Beverage','Review Required','HS-1020']];cards.innerHTML=p.map(x=>`<div class="card"><div style="display:flex;justify-content:space-between"><b>${x[0]}</b><span class="badge ${x[2]==='Compliant'?'green':x[2]==='Review Required'?'amber':'red'}">${x[2]}</span></div><p class="small muted">${x[1]} • ${x[3]}</p></div>`).join('')</script></main></div><div id="toast" class="toast"></div>
+<script>
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open')}
+function logout(){localStorage.removeItem('hexa_auth');location.href='login.html'}
+if(!localStorage.getItem('hexa_auth')) location.href='login.html';
+const page=location.pathname.split('/').pop()||'dashboard.html';
+document.querySelectorAll('.nav').forEach(n=>{if(n.dataset.page===page)n.classList.add('active')});
+function toast(msg){const t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+</script></body></html>

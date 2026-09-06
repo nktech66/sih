@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Compliance Rules PACK VERIFY</title><link rel="stylesheet" href="style.css"></head><body><header class="top">
+<div style="display:flex;align-items:center"><button class="menu" onclick="toggleMenu()">☰</button><a class="logo" href="dashboard.html">PACK VERIFY</a></div>
+<div class="profile"><div><b>OFFICER12</b><div class="small muted">Inspection Officer</div></div><button class="secondary" onclick="logout()">Logout</button></div>
+</header>
+<div class="layout"><aside id="sidebar" class="side">
+<a class="nav" data-page="dashboard.html" href="dashboard.html">Dashboard</a>
+<a class="nav" data-page="scan.html" href="scan.html">Scan Product</a>
+<a class="nav" data-page="history.html" href="history.html">Inspection History</a>
+<a class="nav" data-page="products.html" href="products.html">Product Repository</a>
+<a class="nav" data-page="reports.html" href="reports.html">Reports</a>
+<a class="nav" data-page="rules.html" href="rules.html">Compliance Rules</a>
+</aside><main class="content"><section><div class="head"><div><h1>Compliance Rules</h1><p class="muted">Requirements used in the inspection workflow</p></div></div><div class="panel"><table class="table"><thead><tr><th>Requirement</th><th>Applicability</th><th>Check</th></tr></thead><tbody>
+<tr><td>Manufacturer / Packer / Importer information</td><td>Where applicable</td><td>Presence & readability</td></tr><tr><td>Common / Generic Name</td><td>Where applicable</td><td>Presence & correctness</td></tr><tr><td>Net Quantity</td><td>Where applicable</td><td>Presence & format</td></tr><tr><td>MRP / Retail Sale Price</td><td>Where applicable</td><td>Presence & declaration</td></tr><tr><td>Manufacture / Packing Date</td><td>Where applicable</td><td>Presence & readability</td></tr><tr><td>Best Before / Use By</td><td>Where applicable</td><td>Presence & readability</td></tr><tr><td>Consumer Care Details</td><td>Where applicable</td><td>Presence & readability</td></tr><tr><td>Placement / Font Size / Readability</td><td>Technically assessable cases</td><td>Image-based assessment</td></tr>
+</tbody></table></div></section></main></div><div id="toast" class="toast"></div>
+<script>
+function toggleMenu(){document.getElementById('sidebar').classList.toggle('open')}
+function logout(){localStorage.removeItem('hexa_auth');location.href='login.html'}
+if(!localStorage.getItem('hexa_auth')) location.href='login.html';
+const page=location.pathname.split('/').pop()||'dashboard.html';
+document.querySelectorAll('.nav').forEach(n=>{if(n.dataset.page===page)n.classList.add('active')});
+function toast(msg){const t=document.getElementById('toast');if(!t)return;t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',1800)}
+</script></body></html>
